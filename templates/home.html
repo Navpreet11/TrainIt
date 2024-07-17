@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+<meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>TrainIt</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Archivo+Black&display=swap" rel="stylesheet">
+
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+</head>
+
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+        background: black;
+}
+
+.topbar {
+    width: 100%;
+    height: 85px;
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(150, 150, 150, 0.2);
+    z-index: 1000;
+}
+
+.toplink{top:40%;position:fixed;  z-index: 1000;right:10%
+}
+.content {
+    padding-top: 100px }
+
+.answer{animation:fadeInLeft;animation-duration:1s;margin: 10px;float:left;display:flex;align-items:center;justify-content:center;width:80%;background:#1c1c1c;color:white;border-radius:40px 40px 40px 0px;}
+.question{animation:fadeInRight;animation-duration:1s;margin:10px;float:right;display:flex;align-items:center;justify-content:center;width:80%;background:blue;color:white;border-radius:40px 0px 40px 40px}
+
+
+h4 {
+    text-align: center;
+    background: -webkit-linear-gradient(#FFE71A, #FFEA37, #FFEE5F, #FFF392, #FFF5A3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: bold;
+}
+
+h3{text-align:center;font-size:15px;}
+
+input{width:50%;left:25%;bottom:5px;height:40px;position:fixed;border-radius:80px ; background:#1c1c1c;color:grey;border:2px solid grey;transition: 2s}
+
+input:hover, select:hover{transition-duration: 2s;width:80%;left:10%;border-radius:0px;border-image: linear-gradient(to right, #FFE71A, #FFEA37, #FFEE5F, #FFF392, #FFF5A3)1;}
+
+input::placeholder{text-align:center;background: -webkit-linear-gradient(#FFE71A, #FFEA37, #FFEE5F, #FFF392, #FFF5A3);  -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+</style>
+<body>
+<div class="topbar">
+    <p style="text-align:center">
+        <img src="https://img.icons8.com/?size=100&id=ZkNtfkg1ssmW&format=png&color=000000" width="50px" height="50px">
+    </p>
+
+
+  <h4>TrainIt</h4>
+ 
+<a  style="color:darkblue"href="{{url_for("submit")}}" class="toplink"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+</svg></a>
+
+</div>
+
+<div class="content">
+
+
+{% if showdat %}
+
+<div class="answer">
+
+<h3> Welcome to TrainIt </h3>
+</div>
+<div class="answer">
+
+<h3> Developed and maintained by Navpreet Singh</h3></div>
+<div class="answer">
+
+<h3>A chatbot which gives responses as given or submitted by users</h3></div>
+<div class="answer">
+
+<h3>TrainIt may give iappropriate responses you may flag the response</h3></div>
+
+{% endif%}
+
+{% for i in lis%}
+
+<div class="question">
+<h3>{{i["question"]}}</h3>
+
+</div>
+
+<div class="answer">
+<h3>{{i["answers"]}}</h3>
+<br>
+
+
+<a  href="{{url_for('addflag',answerid=i['answers'])}}" style="color:red;text-decoration:none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hand-thumbs-down-fill" viewBox="0 0 16 16">
+  <path d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591"/>
+</svg></a>
+
+</div>
+
+
+{%endfor%}
+
+<form action="{{url_for("home")}}" method="POST">
+
+<input type="text" placeholder="Let's have a chat" name="query">
+
+
+</form>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+<meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>TrainIt</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Archivo+Black&display=swap" rel="stylesheet">
+
+ <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+        background: black;
+}
+
+.topbar {
+    width: 100%;
+    height: 85px;
+    position: fixed;
+    top: 0;
+       z-index: 1000;
+}
+
+.content {
+    padding-top: 100px; }
+
+.answer{animation:fadeInLeft;animation-duration:1s;margin: 10px;float:left;display:flex;align-items:center;justify-content:center;width:80%;background:#1c1c1c;color:white;border-radius:40px 40px 40px 0px}
+.question{animation:fadeInRight;animation-duration:1s;margin:10px;float:right;display:flex;align-items:center;justify-content:center;width:80%;background:blue;color:white;border-radius:40px 0px 40px 40px}
+
+.topinput{width:80%;left:10%;top:10%;height:150px;position:fixed;border-radius:10px ; background:#1c1c1c;color:grey;transition: 2s;border:none}
+
+
+.topinput::placeholder{text-align:center;padding-top:40px;background: -webkit-linear-gradient(#FFE71A, #FFEA37, #FFEE5F, #FFF392, #FFF5A3);  -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.bottinput{width:80%;left:10%;top:35%;height:50%;position:fixed;border-radius:10px ; background:#1c1c1c;color:grey;border:none;transition: 2s}
+
+
+.bottinput::placeholder{text-align:center;padding-top:100px;background: -webkit-linear-gradient(#FFE71A, #FFEA37, #FFEE5F, #FFF392, #FFF5A3);  -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.linkst{padding-top:1%;padding-left:5%; z-index: 1000;
+}
+
+button{left:40%;position:fixed;bottom:2%;height:10%;color:black;width:25%;background:darkblue;border-radius:20px;z-index: 1000;border:none}
+
+</style>
+<body>
+
+<div class="topbar">
+<div class="linkst">
+<h3 style="font-family:Helvetica, Arial, sans-serif;"><a href="{{url_for("home")}}" style="color:darkblue;text-decoration:none"><span class="material-symbols-outlined">
+arrow_back_ios
+</span>Back</a></h3>
+</div>
+</div>
+
+<div class="content">
+
+<form action="{{url_for("submit")}}" method="POST">
+
+<input type="text" placeholder="Enter your question" name="query" class="topinput"/></div>
+
+<textarea type="text" placeholder="Enter the response of the question you provided" name="answer" class="bottinput"/></textarea></div>
+<button action="submit"><h4> Submit</h4></button>
+</form>
+
+</div>
+
+</body>
+</html>
+
