@@ -95,9 +95,7 @@ def home():
                
                     
                 lis.append({"question":question,"answers":answer})
-        
-        
-       else:
+      else:
             showdat=" "
     except Exception as e:
       return f'{e}'
