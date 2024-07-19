@@ -32,7 +32,7 @@ def setcookie():
     ran=random.randint(1,100000)
 
     cva = socket.gethostname()
-    parts = original_string.split('-')
+    parts = cva.split('-')
     vpart = parts[3]
     ppart=parts[4]
 
