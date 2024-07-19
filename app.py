@@ -128,7 +128,7 @@ def home():
    
 
            return redirect(url_for("home"))
-        except Exception as e:
+         except Exception as e:
            return f"{e}"
         
         
