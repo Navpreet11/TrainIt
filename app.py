@@ -113,22 +113,23 @@ def home():
 
         pattern = f"%{q}%"
 
-        
-        cur.execute("SELECT answers FROM responses WHERE prompt LIKE %s or prompt REGEXP %s",(pattern,q,))
-        al=cur.fetchall()
-
-        if al:
+        try:
+          cur.execute("SELECT answers FROM responses WHERE prompt LIKE %s or prompt REGEXP %s",(pattern,q,))
+          al=cur.fetchall()
+          if al:
                 ran=random.choice(al)[0]
-        else:
+          else:
                 ran=f"TrainIt don't have a response for this query.You can train TrainIt for this query"
 
             
-        cur.execute("INSERT INTO usersrequest (cookiesid,question,answer) VALUES(%s,%s,%s)",(co,q,ran,))
-        my.commit()
+           cur.execute("INSERT INTO usersrequest (cookiesid,question,answer) VALUES(%s,%s,%s)",(co,q,ran,))
+           my.commit()
         
    
 
-        return redirect(url_for("home"))
+           return redirect(url_for("home"))
+        except Exception as e:
+           return f"{e}"
         
         
         
