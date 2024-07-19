@@ -87,22 +87,20 @@ def home():
    
     
    
-    
-   
-    cur.execute("SELECT question,answer FROM usersrequest WHERE cookiesid=%s",(co,))
-    datafetch=cur.fetchall()
-
-    
-    if datafetch:
+    try:
+      cur.execute("SELECT question,answer FROM usersrequest WHERE cookiesid=%s",(co,))
+      datafetch=cur.fetchall()
+      if datafetch:
             for question,answer  in datafetch:
                
                     
                 lis.append({"question":question,"answers":answer})
         
         
-        
-    else:
+       else:
             showdat=" "
+    except Exception as e:
+      return f'{e}'
    
            
     
