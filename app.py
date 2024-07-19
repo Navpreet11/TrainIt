@@ -5,7 +5,7 @@ import datetime
 import socket
 
 #connection_timeout=3000
-my=mysql.connector.connect(host="b674oycwegn7xfg3iltb-mysql.services.clever-cloud.com",user="un4d7o5fdqli8v4n",password="GvUQkj5im2FvXGp4qVmp",database="b674oycwegn7xfg3iltb")
+my=mysql.connector.connect(host="b674oycwegn7xfg3iltb-mysql.services.clever-cloud.com",user="un4d7o5fdqli8v4n",password="GvUQkj5im2FvXGp4qVmp",database="b674oycwegn7xfg3iltb",connection_timeout=3000)
 cur=my.cursor(buffered=True)
 #cur=my.cursor()
 
