@@ -37,7 +37,7 @@ def setcookie():
     ppart=parts[4]
 
     cval=str(vpart+ppart)
-    ip = socket.gethostbyname(cval)
+    ip = socket.gethostbyname(cva)
 
     ran=str(ran)
     
